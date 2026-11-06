@@ -1,7 +1,7 @@
-const CreateProduct = () => {
-  return (
-    <div></div>
-  )
-}
+import Products from "./Products";
 
-export default CreateProduct
+const CreateProduct = () => {
+  return <Products showCreateModal />;
+};
+
+export default CreateProduct;

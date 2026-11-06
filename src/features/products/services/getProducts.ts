@@ -1,19 +1,8 @@
-import type { Product } from '../models/response/Product';
-import { config } from '../../../config';
+import type { Product } from "../models/response/Product";
+import { apiRequest } from "../../../shared/services/http";
 
-const API_URL = `${config.api.url}/api/products`;
+const PRODUCTS_PATH = "/api/products";
 
-export async function getProducts(): Promise<Product[]> {
-  try {
-    const response = await fetch(API_URL);
-
-    if (!response.ok) {
-      throw new Error('Error al obtener los productos');
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error('Error en productService: ', error);
-    throw error;
-  }
+export async function getProducts(signal?: AbortSignal): Promise<Product[]> {
+  return apiRequest<Product[]>(PRODUCTS_PATH, { signal });
 }

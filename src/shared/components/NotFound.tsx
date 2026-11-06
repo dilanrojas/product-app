@@ -1,27 +1,33 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { buttonClassName } from "../components/buttonStyles";
 
 const NotFound = () => {
   return (
-    <section>
-      <span aria-hidden="true">404</span>
+    <section className="flex flex-col items-center py-16 text-center sm:py-24">
+      <p className="font-mono text-xs text-zinc-500">404</p>
 
-      <p>Error 404 | Fuera de ruta</p>
+      <h1 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950">
+        Esta página no existe
+      </h1>
 
-      <h1 id="not-found-title">Esta página no existe</h1>
-
-      <p>
+      <p className="mt-2 max-w-sm text-sm leading-6 text-zinc-600">
         La dirección puede haber cambiado o estar escrita incorrectamente.
       </p>
 
-      <div>
-        <Link to='/'><span>Volver al inicio</span></Link>
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <Link to="/" className={buttonClassName({ size: "sm" })}>
+          Volver al inicio
+        </Link>
 
-        <Link to='/products'>
-          <span>Volver a productos</span>
+        <Link
+          to="/products"
+          className={buttonClassName({ variant: "secondary", size: "sm" })}
+        >
+          Ver productos
         </Link>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;
